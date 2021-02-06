@@ -71,12 +71,14 @@ def render_frame(a, b):
 
     # Now, dump char_output to the screen.
     # Bring cursor to "home" location, in just about any currently-used terminal emulation mode
-    print('\x1b[H')
+    # print('\x1b[H')
+
+    # Clear screen
+    print('\033c')
+
     # noinspection PyShadowingNames
     for i in range(screen_height):
-        for j in range(screen_width):
-            print(char_output[i][j], end='')
-        print()
+        print(''.join(char_output[i][:]))
 
 
 theta_spacing = 0.07
@@ -98,7 +100,7 @@ screen_height = 35
 
 K1 = screen_width * K2 * 3 / (8 * (R1 + R2))
 
-print('\x1b[2J')
+# print('\x1b[2J')
 A = 1.0
 B = 1.0
 
